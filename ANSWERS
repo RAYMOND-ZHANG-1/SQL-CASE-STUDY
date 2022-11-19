@@ -1,4 +1,4 @@
-## QUESTION 1
+QUESTION 1
 SELECT customer,
        total_spend
   FROM (SELECT customer_id AS customer,
