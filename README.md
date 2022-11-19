@@ -8,6 +8,7 @@ Danny’s Diner is in need of your assistance to help the restaurant stay afloat
 
 ### Case Study Questions
 1.What is the total amount each customer spent at the restaurant?
+
 SELECT customer,
        total_spend
   FROM (SELECT customer_id AS customer,
