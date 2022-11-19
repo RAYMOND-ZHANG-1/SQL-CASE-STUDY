@@ -1,4 +1,4 @@
-QUESTION 1:
+QUESTION 1: BY USING SUBQUERY IN FROM 
 SELECT customer,
        total_spend
   FROM (SELECT customer_id AS customer,
@@ -9,9 +9,24 @@ SELECT customer,
 	 GROUP BY customer
 	 ORDER BY total_spend)AS subquery
 
-QUESTION 2:
+QUESTION 2: BY USING COUNT DISTINCT
 SELECT customer_id AS customer,
        COUNT(DISTINCT order_date)AS total_days_visit
   FROM dannys_diner.sales
  GROUP BY customer
  ORDER BY total_days_visit
+
+QUESTION 3: BY USING CTE 
+WITH purchased_product AS(
+SELECT a.customer_id,
+       b.product_name,
+       a.order_date,
+       DENSE_RANK() OVER (PARTITION BY a.customer_id ORDER BY a.order_date ASC)AS rank
+  FROM dannys_diner.sales AS a
+  LEFT JOIN dannys_diner.menu AS b
+    ON a.product_id=b.product_id)
+SELECT DISTINCT customer_id,
+       product_name,
+	   order_date
+  FROM purchased_product
+ WHERE rank=1
