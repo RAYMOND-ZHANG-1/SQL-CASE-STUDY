@@ -8,3 +8,12 @@ Danny’s Diner is in need of your assistance to help the restaurant stay afloat
 
 ### Case Study Questions
 1.What is the total amount each customer spent at the restaurant?
+SELECT customer,
+       total_spend
+  FROM (SELECT customer_id AS customer,
+	           SUM(price)AS total_spend
+	      FROM dannys_diner.menu AS a
+	     INNER JOIN dannys_diner.sales AS b
+	        ON a.product_id=b.product_id
+	     GROUP BY customer
+	     ORDER BY total_spend)AS subquery 
