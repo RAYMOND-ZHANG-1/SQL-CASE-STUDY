@@ -7,14 +7,13 @@ Danny’s Diner is in need of your assistance to help the restaurant stay afloat
 <img width="590" alt="Screenshot 2022-11-19 at 14 31 54" src="https://user-images.githubusercontent.com/115651221/202874093-887bc9af-c627-450e-88bb-69e2838c7585.png">
 
 ### Case Study Questions
-#### 1.What is the total amount each customer spent at the restaurant?
-
-     SELECT customer,
-            total_spend
-       FROM (SELECT customer_id AS customer,
-	           SUM(price)AS total_spend
-	      FROM dannys_diner.menu AS a
-	     INNER JOIN dannys_diner.sales AS b
-	        ON a.product_id=b.product_id
-	     GROUP BY customer
-	     ORDER BY total_spend)AS subquery 
+1.What is the total amount each customer spent at the restaurant?
+2.How many days has each customer visited the restaurant?
+3.What was the first item from the menu purchased by each customer?
+4.What is the most purchased item on the menu and how many times was it purchased by all customers?
+5.Which item was the most popular for each customer?
+6.Which item was purchased first by the customer after they became a member?
+7.Which item was purchased just before the customer became a member?
+8.What is the total items and amount spent for each member before they became a member?
+9.If each $1 spent equates to 10 points and sushi has a 2x points multiplier - how many points would each customer have?
+10.In the first week after a customer joins the program (including their join date) they earn 2x points on all items, not just sushi - how many points do customer A and B have at the end of January?
