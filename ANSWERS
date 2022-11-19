@@ -2,9 +2,9 @@
 SELECT customer,
        total_spend
   FROM (SELECT customer_id AS customer,
-	           SUM(price)AS total_spend
-	      FROM dannys_diner.menu AS a
-	     INNER JOIN dannys_diner.sales AS b
-	        ON a.product_id=b.product_id
-	     GROUP BY customer
-	     ORDER BY total_spend)AS subquery
+	       SUM(price)AS total_spend
+	  FROM dannys_diner.menu AS a
+	 INNER JOIN dannys_diner.sales AS b
+	    ON a.product_id=b.product_id
+	 GROUP BY customer
+	 ORDER BY total_spend)AS subquery
