@@ -1,4 +1,4 @@
-QUESTION 1
+QUESTION 1:
 SELECT customer,
        total_spend
   FROM (SELECT customer_id AS customer,
@@ -8,3 +8,10 @@ SELECT customer,
 	    ON a.product_id=b.product_id
 	 GROUP BY customer
 	 ORDER BY total_spend)AS subquery
+
+QUESTION 2:
+SELECT customer_id AS customer,
+       COUNT(DISTINCT order_date)AS total_days_visit
+  FROM dannys_diner.sales
+ GROUP BY customer
+ ORDER BY total_days_visit
