@@ -6,4 +6,4 @@ Danny’s Diner is in need of your assistance to help the restaurant stay afloat
 
 <img width="590" alt="Screenshot 2022-11-19 at 14 31 54" src="https://user-images.githubusercontent.com/115651221/202874093-887bc9af-c627-450e-88bb-69e2838c7585.png">
 ## Case Study Questions
-What is the total amount each customer spent at the restaurant?
+1.What is the total amount each customer spent at the restaurant?
