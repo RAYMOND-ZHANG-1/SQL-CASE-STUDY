@@ -40,3 +40,17 @@ SELECT product_name,
  GROUP BY product_name
  ORDER BY total_ordered_times DESC
  LIMIT 1
+
+QUESTION 5: BY USING WINDOWS FUNCTION AND SUBQUERY
+
+SELECT customer,
+       popular_product
+  FROM(SELECT a.customer_id AS customer,
+	      b.product_name AS popular_product,
+	      COUNT(b.product_name),
+	      DENSE_RANK()OVER(PARTITION BY a.customer_id ORDER BY COUNT(a.product_id)DESC)AS rank
+	 FROM dannys_diner.sales AS a
+	INNER JOIN dannys_diner.menu AS b
+	   ON a.product_id=b.product_id
+	GROUP BY customer,popular_product) AS sub
+ WHERE rank=1
