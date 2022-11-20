@@ -30,3 +30,13 @@ SELECT DISTINCT customer_id,
 	   order_date
   FROM purchased_product
  WHERE rank=1
+
+QUESTION 3: BY USING LIMIT 
+SELECT product_name,
+       COUNT(a.product_id)AS total_ordered_times
+  FROM dannys_diner.menu AS a
+ INNER JOIN dannys_diner.sales AS b
+    ON a.product_id=b.product_id
+ GROUP BY product_name
+ ORDER BY total_ordered_times DESC
+ LIMIT 1
