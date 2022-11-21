@@ -54,3 +54,26 @@ SELECT customer,
 	   ON a.product_id=b.product_id
 	GROUP BY customer,popular_product) AS sub
  WHERE rank=1
+QUESTION 6: BY USING SUBQUERY AND OLAP AND JOIN TABLES
+
+SELECT customer_id,
+       product_name,
+	   order_date
+  FROM(
+SELECT a.customer_id,
+	   b.order_date,
+	   c.product_name,
+	   DENSE_RANK()OVER(PARTITION BY a.customer_id ORDER BY b.order_date)AS rank
+  FROM dannys_diner.members AS a
+ INNER JOIN dannys_diner.sales AS b
+    ON a.customer_id=b.customer_id
+ INNER JOIN dannys_diner.menu AS c
+    ON b.product_id=c.product_id
+ WHERE b.order_date >= join_date
+ GROUP BY a.customer_id,
+	  b.order_date,
+	  c.product_name
+ ORDER BY b.order_date
+      )AS subquery
+ WHERE RANK =1
+ 
