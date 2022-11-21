@@ -120,11 +120,10 @@ SELECT a.customer_id,
    FROM(  
  SELECT customer_id,
         CASE 
-           WHEN product_name = 'sushi' THEN SUM(price)*10*2 
-	   ELSE SUM(price)*10 END AS total_points
+           WHEN product_name = 'sushi' THEN price*10*2 
+	   ELSE price*10 END AS total_points
    FROM dannys_diner.menu AS a
   INNER JOIN dannys_diner.sales AS b
      ON a.product_id = b.product_id
-  GROUP BY customer_id,product_name
        )AS subquery
   GROUP BY customer_id
