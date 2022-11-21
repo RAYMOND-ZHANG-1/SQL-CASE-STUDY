@@ -61,9 +61,9 @@ SELECT customer_id,
 	   order_date
   FROM(
 SELECT a.customer_id,
-	   b.order_date,
-	   c.product_name,
-	   DENSE_RANK()OVER(PARTITION BY a.customer_id ORDER BY b.order_date)AS rank
+       b.order_date,
+       c.product_name,
+       DENSE_RANK()OVER(PARTITION BY a.customer_id ORDER BY b.order_date)AS rank
   FROM dannys_diner.members AS a
  INNER JOIN dannys_diner.sales AS b
     ON a.customer_id=b.customer_id
