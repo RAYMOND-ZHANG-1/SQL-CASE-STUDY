@@ -100,27 +100,17 @@ SELECT a.customer_id,
       )AS subquery
  WHERE RANK =1
  
-QUESTION 8: AGGREGATE FUNCTION + JOIN TABLES + SUBQUERY
+QUESTION 8: AGGREGATE FUNCTION + JOIN TABLES
 
-SELECT customer_id,
-       SUM(total_spent)AS total_spent,
-       COUNT(total_items)AS total_items
-  FROM(
 SELECT a.customer_id,
        COUNT(b.product_id)AS total_items,
-       SUM(c.price)AS total_spent,
-       b.order_date,
-       c.product_name	   
+       SUM(c.price)AS total_spent   
   FROM dannys_diner.members AS a
  INNER JOIN dannys_diner.sales AS b
     ON a.customer_id=b.customer_id
  INNER JOIN dannys_diner.menu AS c
     ON b.product_id=c.product_id
  WHERE b.order_date < join_date
- GROUP BY a.customer_id,
-	  b.order_date,
-	  c.product_name
- ORDER BY total_items
-      )AS subquery
- GROUP BY customer_id
+ GROUP BY a.customer_id
+	      
  
