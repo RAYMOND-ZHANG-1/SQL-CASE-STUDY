@@ -58,7 +58,7 @@ QUESTION 6: BY USING SUBQUERY AND OLAP AND JOIN TABLES
 
 SELECT customer_id,
        product_name,
-	   order_date
+       order_date
   FROM(
 SELECT a.customer_id,
        b.order_date,
