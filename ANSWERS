@@ -113,4 +113,18 @@ SELECT a.customer_id,
  WHERE b.order_date < join_date
  GROUP BY a.customer_id
 	      
+ QUESTION 9: CASE WHEN + SUBQUERY
  
+ SELECT customer_id,
+        SUM(total_points) AS total_points
+   FROM(  
+ SELECT customer_id,
+        CASE 
+           WHEN product_name = 'sushi' THEN SUM(price)*10*2 
+	   ELSE SUM(price)*10 END AS total_points
+   FROM dannys_diner.menu AS a
+  INNER JOIN dannys_diner.sales AS b
+     ON a.product_id = b.product_id
+  GROUP BY customer_id,product_name
+       )AS subquery
+  GROUP BY customer_id
